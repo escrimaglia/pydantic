@@ -2,7 +2,7 @@
 
 ## Web page
 
-web page[https://docs.pydantic.dev/latest/]
+web page [https://docs.pydantic.dev/latest/]
 
 ## Serialización
 
