@@ -1,0 +1,8 @@
+nombre: null
+familia: null
+memoria: 2000
+interfaces:
+  - nombre: null
+    tipo: gigabit
+    slot: 0
+    port: 0
