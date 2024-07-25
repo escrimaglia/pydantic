@@ -3,16 +3,16 @@ import json
 from ruamel.yaml import YAML
 
 class Interfaces(BaseModel):
-    nombre: str | None = None
+    nombre: str
     tipo: str | None  = "gigabit"
-    slot: int = Field(gt=0, lt=2, default=0) 
-    port: int = Field(gt=0, lt=3, default=0)
+    slot: int = Field(gt=0, lt=2) 
+    port: int = Field(gt=0, lt=3)
 
 class Device(BaseModel):
-    nombre: str | None = None
-    familia: str | None = None
-    memoria: int = Field(gt=2000, lt=8000, default=2000) 
-    interfaces: list[Interfaces] = [Interfaces()]
+    nombre: str
+    familia: str
+    memoria: int = Field(gt=2000, lt=8000) 
+    interfaces: list[Interfaces]
 
 # Funciones para generar archivos json y yaml
 def file_json(_json):
@@ -28,8 +28,25 @@ def file_yaml(_json):
         yaml.dump(yaml.load(_json), file)
 
 # Generación del modelo de datos from instancia
+datos_instancia = {
+    'nombre': 'None',
+    'familia': 'None',
+    'memoria': 2024,
+    'interfaces': [
+        {
+            'nombre': 'None',
+            'slot': 1,
+            'port': 1
+        },
+        {
+            'nombre': 'None',
+            'slot': 1,
+            'port': 2
+        }
+    ]
+}
 try:
-    dev = Device()
+    dev = Device.model_validate(datos_instancia)
     json = dev.model_dump_json(indent=2)
     file_json(json)
     file_yaml(json)

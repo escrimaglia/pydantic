@@ -1,13 +1,19 @@
 {
-  "nombre": null,
-  "familia": null,
-  "memoria": 2000,
+  "nombre": "None",
+  "familia": "None",
+  "memoria": 2024,
   "interfaces": [
     {
-      "nombre": null,
+      "nombre": "None",
       "tipo": "gigabit",
-      "slot": 0,
-      "port": 0
+      "slot": 1,
+      "port": 1
+    },
+    {
+      "nombre": "None",
+      "tipo": "gigabit",
+      "slot": 1,
+      "port": 2
     }
   ]
 }
