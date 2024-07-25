@@ -1,5 +1,9 @@
 # Pydantic
 
+## Web page
+
+web page[https://docs.pydantic.dev/latest/]
+
 ## Serialización
 
 codigo: serializacion.py
