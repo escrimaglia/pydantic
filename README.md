@@ -8,7 +8,7 @@ Ejemplo sobre como serializar a formato Dic o Json desde el formato interno de p
 
 Los archivos json_ejemplo y dict_ejemplo contienen datos tipo dict y json que se usan en el ejemplo.
 
-## Deserializacion
+## Deserialización
 
 codigo: deserializacion.py
 
