@@ -1,18 +1,8 @@
-from pydantic import BaseModel, ValidationError, Field
+from pydantic import ValidationError
 import json
 from ruamel.yaml import YAML
-
-class Interfaces(BaseModel):
-    nombre: str
-    tipo: str | None  = "gigabit"
-    slot: int = Field(gt=0, lt=2) 
-    port: int = Field(gt=0, lt=3)
-
-class Device(BaseModel):
-    nombre: str
-    familia: str
-    memoria: int = Field(gt=2000, lt=8000) 
-    interfaces: list[Interfaces]
+from datos_instancia_modelo import datos_instancia
+from clases_modelo import *
 
 # Funciones para generar archivos json y yaml
 def file_json(_json):
@@ -27,27 +17,10 @@ def file_yaml(_json):
     with open("config.yaml", "w") as file:
         yaml.dump(yaml.load(_json), file)
 
-# Generación del modelo de datos from instancia
-datos_instancia = {
-    'nombre': 'None',
-    'familia': 'None',
-    'memoria': 2024,
-    'interfaces': [
-        {
-            'nombre': 'None',
-            'slot': 1,
-            'port': 1
-        },
-        {
-            'nombre': 'None',
-            'slot': 1,
-            'port': 2
-        }
-    ]
-}
+# Validacion del modelo
 try:
-    dev = Device.model_validate(datos_instancia)
-    json = dev.model_dump_json(indent=2)
+    modelo = DataModel.model_validate(datos_instancia)
+    json = modelo.model_dump_json(indent=2)
     file_json(json)
     file_yaml(json)
 except ValidationError as err:

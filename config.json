@@ -1,19 +1,48 @@
 {
-  "nombre": "None",
-  "familia": "None",
-  "memoria": 2024,
-  "interfaces": [
-    {
-      "nombre": "None",
-      "tipo": "gigabit",
-      "slot": 1,
-      "port": 1
+  "modelo": {
+    "version": "api/v1",
+    "metadata": {
+      "name": "None",
+      "author": "Ed Scrimaglia",
+      "tags": "None"
     },
-    {
-      "nombre": "None",
-      "tipo": "gigabit",
-      "slot": 1,
-      "port": 2
+    "specifications": {
+      "environment": {
+        "repository": "None",
+        "ssh_config_file": "None",
+        "debug": false,
+        "ansible_command_timeout": 180,
+        "module_command_timeout": 1800,
+        "sleep_time": 0
+      },
+      "resources": {
+        "devices": [
+          {
+            "nombre": "None",
+            "familia": "None",
+            "memoria": 2024,
+            "interfaces": [
+              {
+                "number": 0,
+                "tipo": "gigabit",
+                "slot": 1,
+                "port": 1
+              },
+              {
+                "number": 1,
+                "tipo": "gigabit",
+                "slot": 1,
+                "port": 2
+              }
+            ]
+          }
+        ],
+        "others": [
+          {
+            "other": "None"
+          }
+        ]
+      }
     }
-  ]
+  }
 }
