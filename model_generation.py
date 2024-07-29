@@ -26,7 +26,7 @@ try:
 except ValidationError as err:
     print (err)
 
-# Creacion del json-schame 
+# Creacion del json schema 
 type_adapter = TypeAdapter(DataModel)
 with open("json_schema.json", "w") as file:
     file.write(json.dumps(type_adapter.json_schema(), indent=2))
