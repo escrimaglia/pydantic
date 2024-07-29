@@ -4,12 +4,13 @@ from ruamel.yaml import YAML
 from datos_instancia_modelo import datos_instancia
 from clases_modelo import *
 
-# Funciones para generar archivos json y yaml
-def file_json(_json):
+# Funciones para generar archivo json
+def file_json(_json: json) -> None:
     with open("config.json", "w") as file:
         file.write(_json)
 
-def file_yaml(_json):
+# Funcion para general archivo yaml
+def file_yaml(_json: json) -> None:
     yaml = YAML(typ="safe", pure=True)
     yaml.default_flow_style = False
     yaml.indent(mapping=2, sequence=4, offset=2)
@@ -17,7 +18,7 @@ def file_yaml(_json):
     with open("config.yaml", "w") as file:
         yaml.dump(yaml.load(_json), file)
 
-# Validacion del modelo y creacion del modelo de datos
+# Validación del modelo y creacion del modelo de datos en jason y yaml
 try:
     modelo = DataModel.model_validate(datos_instancia)
     json_file = modelo.model_dump_json(indent=2)
