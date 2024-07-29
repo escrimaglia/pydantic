@@ -12,8 +12,8 @@ datos_instancia = {
             'resources': {
                 'devices': [
                     {
-                        'nombre': 'None',
-                        'familia': 'None',
+                        'nombre': 'Nombre',
+                        'familia': 'Familia',
                         'memoria': 2024,
                         'interfaces': [
                             {

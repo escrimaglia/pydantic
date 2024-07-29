@@ -1,4 +1,4 @@
-from pydantic import ValidationError
+from pydantic import ValidationError, TypeAdapter
 import json
 from ruamel.yaml import YAML
 from datos_instancia_modelo import datos_instancia
@@ -17,12 +17,16 @@ def file_yaml(_json):
     with open("config.yaml", "w") as file:
         yaml.dump(yaml.load(_json), file)
 
-# Validacion del modelo
+# Validacion del modelo y creacion del modelo de datos
 try:
     modelo = DataModel.model_validate(datos_instancia)
-    json = modelo.model_dump_json(indent=2)
-    file_json(json)
-    file_yaml(json)
+    json_file = modelo.model_dump_json(indent=2)
+    file_json(json_file)
+    file_yaml(json_file)
 except ValidationError as err:
     print (err)
 
+# Creacion del json-schame 
+type_adapter = TypeAdapter(DataModel)
+with open("json_schema.json", "w") as file:
+    file.write(json.dumps(type_adapter.json_schema(), indent=2))

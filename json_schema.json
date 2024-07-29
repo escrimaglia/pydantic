@@ -1,0 +1,296 @@
+{
+  "$defs": {
+    "Device": {
+      "additionalProperties": false,
+      "properties": {
+        "nombre": {
+          "maxLength": 40,
+          "minLength": 6,
+          "title": "Nombre",
+          "type": "string"
+        },
+        "familia": {
+          "maxLength": 50,
+          "minLength": 6,
+          "title": "Familia",
+          "type": "string"
+        },
+        "memoria": {
+          "exclusiveMaximum": 8000,
+          "exclusiveMinimum": 2000,
+          "title": "Memoria",
+          "type": "integer"
+        },
+        "interfaces": {
+          "items": {
+            "$ref": "#/$defs/Interfaces"
+          },
+          "title": "Interfaces",
+          "type": "array"
+        }
+      },
+      "required": [
+        "nombre",
+        "familia",
+        "memoria",
+        "interfaces"
+      ],
+      "title": "Device",
+      "type": "object"
+    },
+    "Environment": {
+      "additionalProperties": false,
+      "properties": {
+        "repository": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Repository"
+        },
+        "ssh_config_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Ssh Config File"
+        },
+        "debug": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": false,
+          "title": "Debug"
+        },
+        "ansible_command_timeout": {
+          "default": 180,
+          "maximum": 180,
+          "minimum": 100,
+          "title": "Ansible Command Timeout",
+          "type": "integer"
+        },
+        "module_command_timeout": {
+          "default": 1800,
+          "maximum": 1800,
+          "minimum": 100,
+          "title": "Module Command Timeout",
+          "type": "integer"
+        },
+        "sleep_time": {
+          "default": 0,
+          "maximum": 180,
+          "minimum": 100,
+          "title": "Sleep Time",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "repository",
+        "ssh_config_file"
+      ],
+      "title": "Environment",
+      "type": "object"
+    },
+    "Interfaces": {
+      "additionalProperties": false,
+      "properties": {
+        "number": {
+          "exclusiveMaximum": 10,
+          "minimum": 0,
+          "title": "Number",
+          "type": "integer"
+        },
+        "tipo": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "gigabit",
+          "title": "Tipo"
+        },
+        "slot": {
+          "exclusiveMaximum": 2,
+          "exclusiveMinimum": 0,
+          "title": "Slot",
+          "type": "integer"
+        },
+        "port": {
+          "exclusiveMaximum": 3,
+          "exclusiveMinimum": 0,
+          "title": "Port",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "number",
+        "slot",
+        "port"
+      ],
+      "title": "Interfaces",
+      "type": "object"
+    },
+    "Metadata": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Name"
+        },
+        "author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "Ed Scrimaglia",
+          "title": "Author"
+        },
+        "tags": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tags"
+        }
+      },
+      "required": [
+        "name",
+        "tags"
+      ],
+      "title": "Metadata",
+      "type": "object"
+    },
+    "Modelo": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "api/v1",
+          "title": "Version"
+        },
+        "metadata": {
+          "$ref": "#/$defs/Metadata"
+        },
+        "specifications": {
+          "$ref": "#/$defs/Specifications"
+        }
+      },
+      "required": [
+        "metadata",
+        "specifications"
+      ],
+      "title": "Modelo",
+      "type": "object"
+    },
+    "Others": {
+      "additionalProperties": false,
+      "properties": {
+        "other": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Other"
+        }
+      },
+      "title": "Others",
+      "type": "object"
+    },
+    "Resources": {
+      "additionalProperties": false,
+      "properties": {
+        "devices": {
+          "items": {
+            "$ref": "#/$defs/Device"
+          },
+          "title": "Devices",
+          "type": "array"
+        },
+        "others": {
+          "items": {
+            "$ref": "#/$defs/Others"
+          },
+          "title": "Others",
+          "type": "array"
+        }
+      },
+      "required": [
+        "devices",
+        "others"
+      ],
+      "title": "Resources",
+      "type": "object"
+    },
+    "Specifications": {
+      "additionalProperties": false,
+      "properties": {
+        "environment": {
+          "$ref": "#/$defs/Environment"
+        },
+        "resources": {
+          "$ref": "#/$defs/Resources"
+        }
+      },
+      "required": [
+        "environment",
+        "resources"
+      ],
+      "title": "Specifications",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "modelo": {
+      "$ref": "#/$defs/Modelo"
+    }
+  },
+  "required": [
+    "modelo"
+  ],
+  "title": "DataModel",
+  "type": "object"
+}

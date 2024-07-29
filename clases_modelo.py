@@ -9,8 +9,8 @@ class Interfaces(BaseModel):
 
 class Device(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    nombre: str
-    familia: str
+    nombre: str = Field(min_length=6, max_length=40)
+    familia: str = Field(min_length=6, max_length=50)
     memoria: int = Field(gt=2000, lt=8000) 
     interfaces: list[Interfaces]
 
