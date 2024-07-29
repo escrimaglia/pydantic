@@ -1,23 +1,27 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 class Interfaces(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     number: int = Field(ge=0, lt=10)
     tipo: str | None  = "gigabit"
     slot: int = Field(gt=0, lt=2) 
     port: int = Field(gt=0, lt=3)
 
 class Device(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     nombre: str
     familia: str
     memoria: int = Field(gt=2000, lt=8000) 
     interfaces: list[Interfaces]
 
 class Metadata(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     name: str | None
     author: str | None = "Ed Scrimaglia"
     tags: str | None
 
 class Environment(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     repository: str | None
     ssh_config_file: str | None
     debug: bool | None = False
@@ -26,20 +30,25 @@ class Environment(BaseModel):
     sleep_time: int = Field(ge=100, le=180, default=0)
 
 class Others(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     other: str | None = None
 
 class Resources(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     devices: list[Device]
     others: list[Others]
 
 class Specifications(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     environment: Environment
     resources: Resources
 
 class Modelo(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     version: str | None = "api/v1"
     metadata: Metadata
     specifications: Specifications
 
 class DataModel(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     modelo: Modelo
