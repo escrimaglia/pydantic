@@ -11,7 +11,7 @@ modelo:
       debug: false
       ansible_command_timeout: 180
       module_command_timeout: 1800
-      sleep_time: 0
+      sleep_time: 100
     resources:
       devices:
         - nombre: Nombre
