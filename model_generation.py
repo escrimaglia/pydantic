@@ -1,3 +1,5 @@
+# By Ed Scrimaglia
+
 from pydantic import ValidationError, TypeAdapter
 import json
 from ruamel.yaml import YAML

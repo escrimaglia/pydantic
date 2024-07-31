@@ -1,3 +1,5 @@
+# By Ed Scrimaglia
+
 from pydantic import BaseModel, ValidationError, Field
 import json
 from pprint import pprint

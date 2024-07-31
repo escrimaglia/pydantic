@@ -1,4 +1,4 @@
-# Pydantic
+# Pydantic -  by Ed Scrimaglia
 
 ## Web page
 

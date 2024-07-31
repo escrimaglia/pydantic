@@ -1,3 +1,5 @@
+# By Ed Scrimaglia
+
 from pydantic import BaseModel, Field
 import pprint
 

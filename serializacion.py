@@ -1,3 +1,5 @@
+# By Ed Scrimaglia
+
 from pydantic import BaseModel, ValidationError, Field
 from datetime import date
 from pprint import pprint
