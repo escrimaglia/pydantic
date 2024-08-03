@@ -1,20 +1,22 @@
 datos_instancia = {
     'modelo': {
         'metadata': {
-            'name': 'None',
-            'tags': 'None'
+            'name': None,
+            'email': 'edscrimaglia@octupus.com',
+            'tags': None
         },
         'specifications': {
             'environment': {
-                'repository': 'None',
-                'ssh_config_file': 'None',
+                'repository': None,
+                'ssh_config_file': None,
             },
             'resources': {
                 'devices': [
                     {
-                        'nombre': 'Nombre',
-                        'familia': 'Familia',
+                        'nombre': None,
+                        'familia': None,
                         'memoria': 2024,
+                        'ip_address': '192.168.1.1',
                         'interfaces': [
                             {
                                 'number': 0,
@@ -24,14 +26,14 @@ datos_instancia = {
                             {
                                 'number': 1,
                                 'slot': 1,
-                                'port': 2
+                                'port': 1
                             }
                         ]
                     }
                 ],
                 'others': [
                     {
-                        'other': 'None'
+                        'other': None
                     }
                 ]
             }

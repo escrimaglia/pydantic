@@ -4,16 +4,30 @@
       "additionalProperties": false,
       "properties": {
         "nombre": {
-          "maxLength": 40,
-          "minLength": 6,
-          "title": "Nombre",
-          "type": "string"
+          "anyOf": [
+            {
+              "maxLength": 40,
+              "minLength": 6,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Nombre"
         },
         "familia": {
-          "maxLength": 50,
-          "minLength": 6,
-          "title": "Familia",
-          "type": "string"
+          "anyOf": [
+            {
+              "maxLength": 50,
+              "minLength": 6,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Familia"
         },
         "memoria": {
           "exclusiveMaximum": 8000,
@@ -21,18 +35,38 @@
           "title": "Memoria",
           "type": "integer"
         },
+        "ip_address": {
+          "anyOf": [
+            {
+              "format": "ipvanyaddress",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Ip Address"
+        },
         "interfaces": {
-          "items": {
-            "$ref": "#/$defs/Interfaces"
-          },
-          "title": "Interfaces",
-          "type": "array"
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Interfaces"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Interfaces"
         }
       },
       "required": [
         "nombre",
         "familia",
         "memoria",
+        "ip_address",
         "interfaces"
       ],
       "title": "Device",
@@ -171,6 +205,19 @@
           ],
           "default": "Ed Scrimaglia",
           "title": "Author"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "format": "email",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "edscrimaglia@octupus.com",
+          "title": "Email"
         },
         "tags": {
           "anyOf": [

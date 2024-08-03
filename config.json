@@ -2,14 +2,15 @@
   "modelo": {
     "version": "api/v1",
     "metadata": {
-      "name": "None",
+      "name": null,
       "author": "Ed Scrimaglia",
-      "tags": "None"
+      "email": "edscrimaglia@octupus.com",
+      "tags": null
     },
     "specifications": {
       "environment": {
-        "repository": "None",
-        "ssh_config_file": "None",
+        "repository": null,
+        "ssh_config_file": null,
         "debug": false,
         "ansible_command_timeout": 180,
         "module_command_timeout": 1800,
@@ -18,9 +19,10 @@
       "resources": {
         "devices": [
           {
-            "nombre": "Nombre",
-            "familia": "Familia",
+            "nombre": null,
+            "familia": null,
             "memoria": 2024,
+            "ip_address": "192.168.1.1",
             "interfaces": [
               {
                 "number": 0,
@@ -32,14 +34,14 @@
                 "number": 1,
                 "tipo": "gigabit",
                 "slot": 1,
-                "port": 2
+                "port": 1
               }
             ]
           }
         ],
         "others": [
           {
-            "other": "None"
+            "other": null
           }
         ]
       }
