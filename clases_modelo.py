@@ -3,15 +3,15 @@
 from pydantic import BaseModel, Field, ConfigDict, EmailStr, IPvAnyAddress, AfterValidator
 from typing import Annotated
 
-# Method to validate uniqueness in a list of Dict
+# Metodo para validar uniqueness en una list de Dict
 def validate_unique(list_dict: list) -> list:
     new_list = {str(d.model_dump()):d for d in list_dict if len(list_dict) > 0}
     if len(new_list) != len(list_dict):
         raise ValueError(f"List of Class {list_dict[0].__class__.__name__} has not unique objects")
     return list_dict
 
-# 
-RequireUniqueDuringValidation = AfterValidator(validate_unique)
+# AfterValidator
+uniqueValidation = AfterValidator(validate_unique)
 
 
 # Clase bloque Interfaces
@@ -29,7 +29,7 @@ class Device(BaseModel):
     familia: str | None = Field(min_length=6, max_length=50)
     memoria: int = Field(gt=2000, lt=8000)
     ip_address: IPvAnyAddress | None
-    interfaces: Annotated[list[Interfaces], RequireUniqueDuringValidation] | None
+    interfaces: Annotated[list[Interfaces], uniqueValidation] | None
 
 # Clase bloque Metadata
 class Metadata(BaseModel):
