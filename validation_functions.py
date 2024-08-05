@@ -1,4 +1,4 @@
-# Class to validate list whit unique elements
+# Class to validate lists whit unique elements
 # By Ed Scrimaglia
 
 from typing import TypeVar

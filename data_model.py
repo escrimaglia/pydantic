@@ -1,4 +1,4 @@
-# Pydantic classes whose problem domain class diagram is in the file Class_diagram.png
+# Pydantic classes whose diagram class is in the file Class_diagram.png
 # By Ed Scrimaglia
 
 from pydantic import BaseModel, Field, ConfigDict, EmailStr, IPvAnyAddress, AfterValidator
