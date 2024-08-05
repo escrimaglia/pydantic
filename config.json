@@ -25,16 +25,14 @@
             "ipAddress": "192.168.1.1",
             "interface": [
               {
-                "number": 0,
                 "tipo": "gigabit",
                 "slot": 1,
                 "port": 1
               },
               {
-                "number": 1,
                 "tipo": "gigabit",
                 "slot": 1,
-                "port": 1
+                "port": 2
               }
             ],
             "vlan": [

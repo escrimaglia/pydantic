@@ -19,14 +19,12 @@ datos_instancia = {
                         'ip_address': '192.168.1.1',
                         'interface': [
                             {
-                                'number': 0,
                                 'slot': 1,
                                 'port': 1
                             },
                             {
-                                'number': 1,
                                 'slot': 1,
-                                'port': 1
+                                'port': 2
                             }
                         ],
                         'vlan': [

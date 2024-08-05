@@ -163,12 +163,6 @@
     "Interface": {
       "additionalProperties": false,
       "properties": {
-        "number": {
-          "exclusiveMaximum": 10,
-          "minimum": 0,
-          "title": "Number",
-          "type": "integer"
-        },
         "tipo": {
           "anyOf": [
             {
@@ -195,7 +189,6 @@
         }
       },
       "required": [
-        "number",
         "slot",
         "port"
       ],

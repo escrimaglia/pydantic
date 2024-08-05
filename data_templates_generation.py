@@ -26,15 +26,13 @@ try:
     modelo = DataModel.model_validate(datos_instancia)
     json_file = modelo.model_dump_json(by_alias=True, indent=2)
     yaml_file = modelo.model_dump_json(indent=2)
-except ValidationError as err:
-    print (f"{err=}")
-
-# Json and Yaml templates generation
-try:
     file_json(json_file)
     file_yaml(yaml_file)
-except Exception as err:
-    print (f"{err=}")
+except (ValidationError, Exception) as err:
+    print (err)
+
+# Json and Yaml templates generation
+
 
 # Json schema generation 
 type_adapter = TypeAdapter(DataModel)
