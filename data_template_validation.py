@@ -1,0 +1,20 @@
+# By Ed Scrimaglia
+
+from pydantic import ValidationError
+import json
+import yaml
+from data_model import *
+
+# Lectura modelo yaml
+with open("config.yaml", "r") as file:
+    data = yaml.safe_load(file.read())
+
+data_json = json.dumps(data, indent=2)
+
+# Model Validaion from Json
+try:
+    dev = DataModel.model_validate_json(data_json)
+    validation = dev.model_dump_json(indent=2)
+    print (f"Validation: {data_json == validation}")
+except ValidationError as err:
+    print (f"{err=}")

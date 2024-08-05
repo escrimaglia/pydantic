@@ -1,37 +1,38 @@
+# Pydantic classes whose problem domain class diagram is in the file Class_diagram.png
 # By Ed Scrimaglia
 
 from pydantic import BaseModel, Field, ConfigDict, EmailStr, IPvAnyAddress, AfterValidator
 from typing import Annotated
-
-# Metodo para validar uniqueness en una list de Dict
-def validate_unique(list_dict: list) -> list:
-    new_list = {str(d.model_dump()):d for d in list_dict if len(list_dict) > 0}
-    if len(new_list) != len(list_dict):
-        raise ValueError(f"List of Class {list_dict[0].__class__.__name__} has not unique objects")
-    return list_dict
-
-# AfterValidator
-uniqueValidation = AfterValidator(validate_unique)
+from validation_functions import ValidateUniqueInList
 
 
-# Clase bloque Interfaces
-class Interfaces(BaseModel):
+# Class Interface
+class Interface(BaseModel):
     model_config = ConfigDict(extra="forbid")
     number: int = Field(ge=0, lt=10)
     tipo: str | None  = "gigabit"
     slot: int = Field(gt=0, lt=2) 
     port: int = Field(gt=0, lt=3)
 
-# Clase bloque Device
+# Class Vlan
+class Vlan(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    number: int = Field(ge=0, le=4096)
+    name: str | None = Field(min_length=5, max_length=20)
+
+
+# Class Device
 class Device(BaseModel):
     model_config = ConfigDict(extra="forbid")
     nombre: str | None = Field(min_length=6, max_length=40)
     familia: str | None = Field(min_length=6, max_length=50)
     memoria: int = Field(gt=2000, lt=8000)
-    ip_address: IPvAnyAddress | None
-    interfaces: Annotated[list[Interfaces], uniqueValidation] | None
+    ip_address: IPvAnyAddress | None = Field(serialization_alias="ipAddress")
+    interface: Annotated[list[Interface], AfterValidator(ValidateUniqueInList.validate_unique_list_objects)] | None
+    vlan: Annotated[list[Vlan], AfterValidator(ValidateUniqueInList.validate_unique_list_objects)] | None
 
-# Clase bloque Metadata
+
+# Class Metadata
 class Metadata(BaseModel):
     model_config = ConfigDict(extra="forbid")
     name: str | None
@@ -39,41 +40,47 @@ class Metadata(BaseModel):
     email: EmailStr | None = "edscrimaglia@octupus.com"
     tags: str | None
 
-# Clase bloque Environment
+
+# Class Environment
 class Environment(BaseModel):
     model_config = ConfigDict(extra="forbid")
     repository: str | None
     ssh_config_file: str | None
     debug: bool | None = False
-    ansible_command_timeout: int = Field(ge=100, le=180, default=180)
-    module_command_timeout: int = Field(ge=100, le=1800, default=1800)
-    sleep_time: int = Field(ge=100, le=180, default=0)
+    ansible_command_timeout: int = Field(ge=100, le=180, default=180, serialization_alias="ansibleCommandTimeout")
+    module_command_timeout: int = Field(ge=100, le=1800, default=1800, serialization_alias="moduleCommandTimeout")
+    sleep_time: int | None = Field(ge=50, le=180, default=50, serialization_alias="sleepTime")
 
-# Clase bloque others
+
+# Class Others
 class Others(BaseModel):
     model_config = ConfigDict(extra="forbid")
     other: str | None = None
 
-# Clase bloque resources
-class Resources(BaseModel):
+
+# Class Resource
+class Resource(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    devices: list[Device]
+    device: list[Device]
     others: list[Others]
 
-# Clase bloque specifications
-class Specifications(BaseModel):
+
+# Class Specification
+class Specification(BaseModel):
     model_config = ConfigDict(extra="forbid")
     environment: Environment
-    resources: Resources
+    resource: Resource
 
-# Clase bloque modelo
+
+# Clase Modelo
 class Modelo(BaseModel):
     model_config = ConfigDict(extra="forbid")
     version: str | None = "api/v1"
     metadata: Metadata
-    specifications: Specifications
+    specification: Specification
 
-# Clase principal
+
+# Clase DataModel
 class DataModel(BaseModel):
     model_config = ConfigDict(extra="forbid")
     modelo: Modelo

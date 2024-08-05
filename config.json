@@ -7,23 +7,23 @@
       "email": "edscrimaglia@octupus.com",
       "tags": null
     },
-    "specifications": {
+    "specification": {
       "environment": {
         "repository": null,
         "ssh_config_file": null,
         "debug": false,
-        "ansible_command_timeout": 180,
-        "module_command_timeout": 1800,
-        "sleep_time": 0
+        "ansibleCommandTimeout": 180,
+        "moduleCommandTimeout": 1800,
+        "sleepTime": 50
       },
-      "resources": {
-        "devices": [
+      "resource": {
+        "device": [
           {
             "nombre": null,
             "familia": null,
             "memoria": 2024,
-            "ip_address": "192.168.1.1",
-            "interfaces": [
+            "ipAddress": "192.168.1.1",
+            "interface": [
               {
                 "number": 0,
                 "tipo": "gigabit",
@@ -35,6 +35,16 @@
                 "tipo": "gigabit",
                 "slot": 1,
                 "port": 1
+              }
+            ],
+            "vlan": [
+              {
+                "number": 0,
+                "name": null
+              },
+              {
+                "number": 1,
+                "name": null
               }
             ]
           }

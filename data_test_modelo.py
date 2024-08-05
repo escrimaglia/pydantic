@@ -5,19 +5,19 @@ datos_instancia = {
             'email': 'edscrimaglia@octupus.com',
             'tags': None
         },
-        'specifications': {
+        'specification': {
             'environment': {
                 'repository': None,
                 'ssh_config_file': None,
             },
-            'resources': {
-                'devices': [
+            'resource': {
+                'device': [
                     {
                         'nombre': None,
                         'familia': None,
                         'memoria': 2024,
                         'ip_address': '192.168.1.1',
-                        'interfaces': [
+                        'interface': [
                             {
                                 'number': 0,
                                 'slot': 1,
@@ -27,6 +27,16 @@ datos_instancia = {
                                 'number': 1,
                                 'slot': 1,
                                 'port': 1
+                            }
+                        ],
+                        'vlan': [
+                            {
+                                'number': 0,
+                                'name': None
+                            },
+                            {
+                                'number': 0,
+                                'name': None
                             }
                         ]
                     }

@@ -47,11 +47,11 @@
           ],
           "title": "Ip Address"
         },
-        "interfaces": {
+        "interface": {
           "anyOf": [
             {
               "items": {
-                "$ref": "#/$defs/Interfaces"
+                "$ref": "#/$defs/Interface"
               },
               "type": "array"
             },
@@ -59,7 +59,21 @@
               "type": "null"
             }
           ],
-          "title": "Interfaces"
+          "title": "Interface"
+        },
+        "vlan": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Vlan"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Vlan"
         }
       },
       "required": [
@@ -67,7 +81,8 @@
         "familia",
         "memoria",
         "ip_address",
-        "interfaces"
+        "interface",
+        "vlan"
       ],
       "title": "Device",
       "type": "object"
@@ -124,11 +139,18 @@
           "type": "integer"
         },
         "sleep_time": {
-          "default": 0,
-          "maximum": 180,
-          "minimum": 100,
-          "title": "Sleep Time",
-          "type": "integer"
+          "anyOf": [
+            {
+              "maximum": 180,
+              "minimum": 50,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": 50,
+          "title": "Sleep Time"
         }
       },
       "required": [
@@ -138,7 +160,7 @@
       "title": "Environment",
       "type": "object"
     },
-    "Interfaces": {
+    "Interface": {
       "additionalProperties": false,
       "properties": {
         "number": {
@@ -177,7 +199,7 @@
         "slot",
         "port"
       ],
-      "title": "Interfaces",
+      "title": "Interface",
       "type": "object"
     },
     "Metadata": {
@@ -256,13 +278,13 @@
         "metadata": {
           "$ref": "#/$defs/Metadata"
         },
-        "specifications": {
-          "$ref": "#/$defs/Specifications"
+        "specification": {
+          "$ref": "#/$defs/Specification"
         }
       },
       "required": [
         "metadata",
-        "specifications"
+        "specification"
       ],
       "title": "Modelo",
       "type": "object"
@@ -286,14 +308,14 @@
       "title": "Others",
       "type": "object"
     },
-    "Resources": {
+    "Resource": {
       "additionalProperties": false,
       "properties": {
-        "devices": {
+        "device": {
           "items": {
             "$ref": "#/$defs/Device"
           },
-          "title": "Devices",
+          "title": "Device",
           "type": "array"
         },
         "others": {
@@ -305,27 +327,57 @@
         }
       },
       "required": [
-        "devices",
+        "device",
         "others"
       ],
-      "title": "Resources",
+      "title": "Resource",
       "type": "object"
     },
-    "Specifications": {
+    "Specification": {
       "additionalProperties": false,
       "properties": {
         "environment": {
           "$ref": "#/$defs/Environment"
         },
-        "resources": {
-          "$ref": "#/$defs/Resources"
+        "resource": {
+          "$ref": "#/$defs/Resource"
         }
       },
       "required": [
         "environment",
-        "resources"
+        "resource"
       ],
-      "title": "Specifications",
+      "title": "Specification",
+      "type": "object"
+    },
+    "Vlan": {
+      "additionalProperties": false,
+      "properties": {
+        "number": {
+          "maximum": 4096,
+          "minimum": 0,
+          "title": "Number",
+          "type": "integer"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "maxLength": 20,
+              "minLength": 5,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Name"
+        }
+      },
+      "required": [
+        "number",
+        "name"
+      ],
+      "title": "Vlan",
       "type": "object"
     }
   },

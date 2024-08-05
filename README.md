@@ -4,30 +4,16 @@
 
 web page [https://docs.pydantic.dev/latest/]
 
-## Serialización
+## Data Model
 
-codigo: serializacion.py
+## Data template generation
 
-Ejemplo sobre como serializar a formato Dic o Json desde el formato interno de pydantic (Pydantic class)
-
-Los archivos json_ejemplo y dict_ejemplo contienen datos tipo dict y json que se usan en el ejemplo para validar
-
-## Deserialización
-
-codigo: deserializacion.py
-
-Ejemplo sobre como deserializar desde formato Dic o Json hacia el formato interno de pydantic (Pydantic class)
-
-Los archivos json_ejemplo y dict_ejemplo contienen datos tipo dict y json que se usan en el ejemplo para validar
-
-## Generación de Modelo
-
-codigo: model_generation.py
+codigo: data_templates_generation.py
 
 A partir de las clases, se generan los archivos .json y .yaml, que pueden usarse como modelo de datos en un CU
 
-## Validación
+## Data template validation
 
-codigo: validacion.py
+codigo: data_template_validation.py
 
 Realiza la validación de un modelo de datos modelo.yaml
