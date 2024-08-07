@@ -20,16 +20,16 @@ modelo:
           memoria: 2024
           ip_address: 192.168.1.1
           interface:
-            - tipo: gigabit
+            - tipo: GigabitEthernet
               slot: 1
               port: 1
-            - tipo: gigabit
+            - tipo: GigabitEthernet
               slot: 1
               port: 2
           vlan:
-            - number: 0
-              name: null
             - number: 1
+              name: null
+            - number: 2
               name: null
       others:
         - other: null

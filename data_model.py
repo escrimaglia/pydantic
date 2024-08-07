@@ -5,15 +5,22 @@ from pydantic import BaseModel, Field, ConfigDict, EmailStr, IPvAnyAddress, Afte
 from typing import Annotated
 from custom_validation import ValidateUniqueInList
 from typing import TypeVar
+from enum import Enum
 
 # Annotated for generic unique objects
 T = TypeVar('T')
 UniqueList = Annotated[list[T], AfterValidator(ValidateUniqueInList.validate_unique_list_objects)]
 
+# Enum for interface type
+class InterfaceType(Enum):
+    gigabit_ethernet = "GigabitEthernet"
+    fast_ethernet = "FastEthernet"
+    channel = "PortChannel"
+
 # Class Interface
 class Interface(BaseModel):
     model_config = ConfigDict(extra="forbid", validate_default=True)
-    tipo: str | None  = "gigabit"
+    tipo: InterfaceType | None  = "GigabitEthernet"
     slot: int = Field(gt=0, lt=2) 
     port: int = Field(gt=0, lt=3)
 

@@ -166,14 +166,13 @@
         "tipo": {
           "anyOf": [
             {
-              "type": "string"
+              "$ref": "#/$defs/InterfaceType"
             },
             {
               "type": "null"
             }
           ],
-          "default": "gigabit",
-          "title": "Tipo"
+          "default": "GigabitEthernet"
         },
         "slot": {
           "exclusiveMaximum": 2,
@@ -194,6 +193,15 @@
       ],
       "title": "Interface",
       "type": "object"
+    },
+    "InterfaceType": {
+      "enum": [
+        "GigabitEthernet",
+        "FastEthernet",
+        "PortChannel"
+      ],
+      "title": "InterfaceType",
+      "type": "string"
     },
     "Metadata": {
       "additionalProperties": false,
