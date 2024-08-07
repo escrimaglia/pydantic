@@ -371,6 +371,7 @@
               "type": "null"
             }
           ],
+          "strip_whitespace": true,
           "title": "Name"
         }
       },

@@ -20,7 +20,7 @@ class InterfaceType(Enum):
 # Class Interface
 class Interface(BaseModel):
     model_config = ConfigDict(extra="forbid", validate_default=True)
-    tipo: InterfaceType | None  = "GigabitEthernet"
+    tipo: InterfaceType | None = "GigabitEthernet"
     slot: int = Field(gt=0, lt=2) 
     port: int = Field(gt=0, lt=3)
 
@@ -28,7 +28,7 @@ class Interface(BaseModel):
 class Vlan(BaseModel):
     model_config = ConfigDict(extra="forbid", validate_default=True)
     number: int = Field(ge=0, le=4096)
-    name: str | None = Field(min_length=5, max_length=20)
+    name: str | None = Field(min_length=5, max_length=20, strip_whitespace=True)
 
 
 # Class Device

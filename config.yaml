@@ -28,7 +28,7 @@ modelo:
               port: 2
           vlan:
             - number: 1
-              name: null
+              name: Vlan Ingenieria
             - number: 2
               name: null
       others:

@@ -30,7 +30,7 @@ datos_instancia = {
                         'vlan': [
                             {
                                 'number': 1,
-                                'name': None
+                                'name': 'Vlan Ingenieria'
                             },
                             {
                                 'number': 2,

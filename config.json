@@ -38,7 +38,7 @@
             "vlan": [
               {
                 "number": 1,
-                "name": null
+                "name": "Vlan Ingenieria"
               },
               {
                 "number": 2,
