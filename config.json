@@ -10,7 +10,7 @@
     "specification": {
       "environment": {
         "repository": null,
-        "ssh_config_file": null,
+        "sshConfigFile": null,
         "debug": false,
         "ansibleCommandTimeout": 180,
         "moduleCommandTimeout": 1800,

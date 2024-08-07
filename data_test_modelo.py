@@ -29,11 +29,11 @@ datos_instancia = {
                         ],
                         'vlan': [
                             {
-                                'number': 0,
+                                'number': 1,
                                 'name': None
                             },
                             {
-                                'number': 1,
+                                'number': 2,
                                 'name': None
                             }
                         ]

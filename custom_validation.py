@@ -14,3 +14,4 @@ class ValidateUniqueInList():
                 unique_list.append(ele)
         return lista
     
+    [1,2,3], [1,2,3,3]

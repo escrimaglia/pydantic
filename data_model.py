@@ -48,7 +48,7 @@ class Metadata(BaseModel):
 class Environment(BaseModel):
     model_config = ConfigDict(extra="forbid", validate_default=True)
     repository: str | None
-    ssh_config_file: str | None
+    ssh_config_file: str | None = Field(serialization_alias="sshConfigFile")
     debug: bool | None = False
     ansible_command_timeout: int = Field(ge=100, le=180, default=180, serialization_alias="ansibleCommandTimeout")
     module_command_timeout: int = Field(ge=100, le=1800, default=1800, serialization_alias="moduleCommandTimeout")
