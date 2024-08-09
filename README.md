@@ -1,4 +1,4 @@
-# Create a Data Model with Pydantic -  by Ed Scrimaglia
+# How to create a Data Model using Pydantic
 
 ## Web page
 
@@ -6,7 +6,7 @@ Pydantic web page [https://docs.pydantic.dev/latest/]
 
 ## Data Model
 
-In the context of Automation, a data model is a structured framework that defines how network or cloud devices and their configurations are represented and managed within automated systems. It organizes information about network elements such as routers, switches, and firewalls, including their settings and relationships. This model helps automate tasks like configuration changes, monitoring, and troubleshooting by providing a clear and consistent way to describe and interact with components. In short, a data model makes it easier to control and manage data infrastructure efficiently through automated processes.
+In the context of automation of infraestructure, a data model is a structured framework that defines how network or cloud devices and their configurations are represented and managed within automated systems. It organizes information about network elements such as routers, switches, and firewalls, including their settings and relationships. This model helps automate tasks like configuration changes, monitoring, and troubleshooting by providing a clear and consistent way to describe and interact with components. In short, a data model makes it easier to control and manage data infrastructure efficiently through automated processes.
 
 ## Using Pydantic in a Data Model
 
