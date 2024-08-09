@@ -3,7 +3,7 @@
 from pydantic import ValidationError, TypeAdapter
 import json
 from ruamel.yaml import YAML
-from data_test_modelo import datos_instancia
+from data_test_model import datos_instancia
 from data_model import *
 
 # Json file generation
