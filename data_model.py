@@ -2,6 +2,7 @@
 # By Ed Scrimaglia
 
 from pydantic import BaseModel, Field, ConfigDict, EmailStr, IPvAnyAddress, AfterValidator
+from pydantic.alias_generators import to_camel
 from typing import Annotated
 from custom_validation import ValidateUniqueInList
 from typing import TypeVar
@@ -33,7 +34,11 @@ class Vlan(BaseModel):
 
 # Class Device
 class Device(BaseModel):
-    model_config = ConfigDict(extra="forbid", validate_default=True)
+    model_config = ConfigDict(extra="forbid", 
+                alias_generator=to_camel,
+                populate_by_name=True,
+                validate_default=True
+            )
     nombre: str | None = Field(min_length=6, max_length=40)
     familia: str | None = Field(min_length=6, max_length=50)
     memoria: int = Field(gt=2000, lt=8000)
@@ -53,7 +58,11 @@ class Metadata(BaseModel):
 
 # Class Environment
 class Environment(BaseModel):
-    model_config = ConfigDict(extra="forbid", validate_default=True)
+    model_config = ConfigDict(extra="forbid", 
+                alias_generator=to_camel,
+                populate_by_name=True,
+                validate_default=True
+            )
     repository: str | None
     ssh_config_file: str | None = Field(serialization_alias="sshConfigFile")
     debug: bool | None = False

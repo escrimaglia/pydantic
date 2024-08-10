@@ -35,7 +35,7 @@
           "title": "Memoria",
           "type": "integer"
         },
-        "ip_address": {
+        "ipAddress": {
           "anyOf": [
             {
               "format": "ipvanyaddress",
@@ -45,7 +45,7 @@
               "type": "null"
             }
           ],
-          "title": "Ip Address"
+          "title": "Ipaddress"
         },
         "interface": {
           "anyOf": [
@@ -80,7 +80,7 @@
         "nombre",
         "familia",
         "memoria",
-        "ip_address",
+        "ipAddress",
         "interface",
         "vlan"
       ],
@@ -101,7 +101,7 @@
           ],
           "title": "Repository"
         },
-        "ssh_config_file": {
+        "sshConfigFile": {
           "anyOf": [
             {
               "type": "string"
@@ -110,7 +110,7 @@
               "type": "null"
             }
           ],
-          "title": "Ssh Config File"
+          "title": "Sshconfigfile"
         },
         "debug": {
           "anyOf": [
@@ -124,21 +124,21 @@
           "default": false,
           "title": "Debug"
         },
-        "ansible_command_timeout": {
+        "ansibleCommandTimeout": {
           "default": 180,
           "maximum": 180,
           "minimum": 100,
-          "title": "Ansible Command Timeout",
+          "title": "Ansiblecommandtimeout",
           "type": "integer"
         },
-        "module_command_timeout": {
+        "moduleCommandTimeout": {
           "default": 1800,
           "maximum": 1800,
           "minimum": 100,
-          "title": "Module Command Timeout",
+          "title": "Modulecommandtimeout",
           "type": "integer"
         },
-        "sleep_time": {
+        "sleepTime": {
           "anyOf": [
             {
               "maximum": 180,
@@ -150,12 +150,12 @@
             }
           ],
           "default": 50,
-          "title": "Sleep Time"
+          "title": "Sleeptime"
         }
       },
       "required": [
         "repository",
-        "ssh_config_file"
+        "sshConfigFile"
       ],
       "title": "Environment",
       "type": "object"
