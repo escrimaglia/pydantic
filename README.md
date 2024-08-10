@@ -3,7 +3,7 @@
 ## References
 
 Pydantic web page [https://docs.pydantic.dev/latest/]  
-Class Diagram (./Diagram/Class_diagram.png)
+[Class Diagram](./Diagram/Class_diagram.png)
 
 ## Data Model
 
