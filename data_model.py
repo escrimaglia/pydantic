@@ -34,7 +34,8 @@ class Vlan(BaseModel):
 
 # Class Device
 class Device(BaseModel):
-    model_config = ConfigDict(extra="forbid", 
+    model_config = ConfigDict(
+                extra="forbid", 
                 alias_generator=to_camel,
                 populate_by_name=True,
                 validate_default=True
@@ -42,7 +43,7 @@ class Device(BaseModel):
     nombre: str | None = Field(min_length=6, max_length=40)
     familia: str | None = Field(min_length=6, max_length=50)
     memoria: int = Field(gt=2000, lt=8000)
-    ip_address: IPvAnyAddress | None = Field(serialization_alias="ipAddress")
+    ip_address: IPvAnyAddress | None
     interface: UniqueList[Interface] | None
     vlan: UniqueList[Vlan] | None
 
@@ -58,17 +59,18 @@ class Metadata(BaseModel):
 
 # Class Environment
 class Environment(BaseModel):
-    model_config = ConfigDict(extra="forbid", 
+    model_config = ConfigDict(
+                extra="forbid", 
                 alias_generator=to_camel,
                 populate_by_name=True,
                 validate_default=True
             )
     repository: str | None
-    ssh_config_file: str | None = Field(serialization_alias="sshConfigFile")
+    ssh_config_file: str | None
     debug: bool | None = False
-    ansible_command_timeout: int = Field(ge=100, le=180, default=180, serialization_alias="ansibleCommandTimeout")
-    module_command_timeout: int = Field(ge=100, le=1800, default=1800, serialization_alias="moduleCommandTimeout")
-    sleep_time: int | None = Field(ge=50, le=180, default=50, serialization_alias="sleepTime")
+    ansible_command_timeout: int = Field(ge=100, le=180, default=180)
+    module_command_timeout: int = Field(ge=100, le=1800, default=1800)
+    sleep_time: int | None = Field(ge=50, le=180, default=50)
 
 
 # Class Others
