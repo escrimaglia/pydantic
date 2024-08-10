@@ -26,7 +26,7 @@ The class diagram is in the file Class_diagarm.png in the Diagram directory.
 
 data_model.py: it contains all the classes that make up the data model, as well as all the data types and constraints.
 
-data_templates_ generation.py: the code uses a test data set to validate the created model and to generate the data templates (yaml and json) that will feed the automation process described above.
+data_templates_ generation.py: the code uses a test data set to validate the created model and to generate the data templates (yaml and json) that will feed the automation process described above. Both files contain the minimal data structure that satisfy the Model and its restrictions (can be twicked to represent the real scenario, ie: add more elements to a list).
 
 data_template_validation.py: The code validates the data structures stored in the data templates (yaml or json) that feed the automation process described above.
 

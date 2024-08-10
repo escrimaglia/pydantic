@@ -1,3 +1,4 @@
+# This code is used to validate or deserialize data comming from a yaml file 
 # By Ed Scrimaglia
 
 from pydantic import ValidationError

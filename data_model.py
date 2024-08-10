@@ -70,9 +70,9 @@ class Others(BaseModel):
 
 # Class Resource
 class Resource(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    device: list[Device]
-    others: list[Others]
+    model_config = ConfigDict(extra="forbid", validate_default=True)
+    device: UniqueList[Device]
+    others: UniqueList[Others]
 
 
 # Class Specification

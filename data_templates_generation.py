@@ -1,3 +1,5 @@
+# This code is used to validate the Data Model using a data set as input. The code also generate 
+# two templates yaml and json that could be used as data input
 # By Ed Scrimaglia
 
 from pydantic import ValidationError, TypeAdapter
