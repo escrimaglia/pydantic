@@ -2,6 +2,7 @@
 
 ## References
 
+![plot](./Diagram/pydantic.png)
 [Pydantic web page](https://docs.pydantic.dev/latest/)  
 [Class Diagram](./Diagram/Class_diagram.png)
 
