@@ -1,8 +1,9 @@
 # How to create a Data Model using Pydantic
 
-## Web page
+## References
 
 Pydantic web page [https://docs.pydantic.dev/latest/]
+Class Diagrm [./Diagram/Class_diagram.png]
 
 ## Data Model
 
