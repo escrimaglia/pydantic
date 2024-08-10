@@ -2,8 +2,8 @@
 
 ## References
 
-Pydantic web page [https://docs.pydantic.dev/latest/]
-Class Diagrm [./Diagram/Class_diagram.png]
+Pydantic web page [https://docs.pydantic.dev/latest/]  
+Class Diagram (./Diagram/Class_diagram.png)
 
 ## Data Model
 
